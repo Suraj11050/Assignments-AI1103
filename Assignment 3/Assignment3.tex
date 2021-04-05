@@ -149,7 +149,7 @@ represent the occurrence of event F, G, H respectively such that
 \end{align*}
 If two Random variables $X_1$ and $X_2$ are independent then 
 \begin{equation}
-\pr{X_1,X_2} = \pr{X_1} \times \pr{X_2} \label{a}
+\pr{X_1 X_2} = \pr{X_1} \times \pr{X_2} \label{a}
 \end{equation}
 Using equation \eqref{a} we get the following results 
 \begin{align*}
@@ -158,7 +158,7 @@ Using equation \eqref{a} we get the following results
 \pr{f=1,g=1} &= \dfrac{1}{3} \times \dfrac{1}{3} = \dfrac{1}{9} 
 \end{align*}
 
-At least one event among F, G, H should occur is $\pr{F\cup G\cup H}$ 
+At least one event among F, G, H should occur is $\pr{F + G + H}$ 
 from Principal of inclusion and exclusion it is calculated using random variable as
 
 \begin{multline*}
@@ -172,18 +172,18 @@ from Principal of inclusion and exclusion it is calculated using random variable
 \therefore \pr{f=1 + g=1 + h=1} &= \dfrac{11}{12}
 \end{align*}
 
-Hence Probability that at least one event among F, G, H occurs is $\pr{F \cup G \cup H}=\dfrac{11}{12}$ and correct answer is \textbf{Option (A)}
+Hence Probability that at least one event among F, G, H occurs is $\pr{F + G + H}=\dfrac{11}{12}$ and correct answer is \textbf{Option (A)}
 \null \par
 But we know that 
 \begin{align*}
-(F \cap G \cap H) &\subseteq (F \cap G) \\
-\therefore \pr{F \cap G \cap H} &\leq \pr{F \cap G} 
+(F \cap G \cap H)     &\subseteq (F \cap G) \\
+\therefore \pr{F G H} &\leq \pr{F G} 
 \end{align*}
 In the given question 
 \begin{align*}
-\pr{F \cap G \cap H} &= \dfrac{1}{4} \\
-\pr{F\cap G}         &= \dfrac{1}{9} \\
-\pr{F \cap G \cap H} &> \pr{F \cap G}
+\pr{F G H} &= \dfrac{1}{4} \\
+\pr{F G}   &= \dfrac{1}{9} \\
+\pr{F G H} &> \pr{F G}
 \end{align*}
 Which is not possible
 
@@ -194,12 +194,12 @@ Some of the probabilities turnout to be negative like
 \pr{f=0,g=1,h=1} &= \dfrac{1}{9} - \dfrac{1}{4} = -\,\dfrac{5}{36} 
 \end{align*}
 \begin{align*}
-\pr{F^{\comp} \cap G \cap H}  &= -\,\dfrac{5}{36} \\
-\pr{F \cap G^{\comp} \cap H}  &= -\,\dfrac{5}{36} \\
-\pr{F^{\comp} \cap G \cap H}  &= -\,\dfrac{5}{36}  
+\pr{F^{\comp} G H}  &= -\,\dfrac{5}{36} \\
+\pr{F G^{\comp} H}  &= -\,\dfrac{5}{36} \\
+\pr{F^{\comp} G H}  &= -\,\dfrac{5}{36}  
 \end{align*}
 Probability $P\in [0,1]$ but the data in the question some of the probabilities turn out to be negative
-Similar case with $\pr{G \cap H}$ and $\pr{H \cap F}$ 
+Similar case with $\pr{G H}$ and $\pr{H F}$ 
 
 Therefore \textbf{Question is incorrect}
 \end{document}
