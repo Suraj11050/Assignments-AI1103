@@ -102,7 +102,7 @@ columns=fullflexible
 	%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
 \newcommand{\solution}{\noindent \textbf{Solution: }}
 \newcommand{\cosec}{\,\text{cosec}\,}
-\newcommand{\comp}{\mathsf{c}}
+\newcommand{\stcomp}[1]{{#1'}}          
 \providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
 \newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
 \newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
@@ -167,8 +167,8 @@ Hence Probability that at least one event among F, G, H occurs is $\pr{F + G + H
 \null \par \null
 But we know that 
 \begin{align}
-(F G) &= (F G H) + (F G H^{\comp}) \\
-\pr{F G} &= \pr{F G H} + \pr{F G H^{\comp}} \\
+(F G) &= (F G H) + (F G \stcomp{H}) \\
+\pr{F G} &= \pr{F G H} + \pr{F G \stcomp{H}} \\
 \therefore \pr{F G} &\geq \pr{F G H} \label{f}
 \end{align}
 In the given question 
@@ -184,9 +184,9 @@ Similar case with $\pr{G H}$ and $\pr{H F}$
 
 Some of the probabilities turnout to be negative like 
 \begin{align}
-\pr{F^{\comp} G H}  &= \dfrac{1}{9} - \dfrac{1}{4} = -\,\dfrac{5}{36} \\
-\pr{F G^{\comp} H}  &= \dfrac{1}{9} - \dfrac{1}{4} = -\,\dfrac{5}{36} \\
-\pr{F^{\comp} G H}  &= \dfrac{1}{9} - \dfrac{1}{4} = -\,\dfrac{5}{36} 
+\pr{\stcomp{F} G H}  &= \dfrac{1}{9} - \dfrac{1}{4} = -\,\dfrac{5}{36} \\
+\pr{F \stcomp{G} H}  &= \dfrac{1}{9} - \dfrac{1}{4} = -\,\dfrac{5}{36} \\
+\pr{F G \stcomp{H}}  &= \dfrac{1}{9} - \dfrac{1}{4} = -\,\dfrac{5}{36} 
 \end{align}
 Probability $P\in [0,1]$ but because of the data in the question some of the probabilities turn out to be negative. Therefore \textbf{Question is incorrect}
 \end{document}
