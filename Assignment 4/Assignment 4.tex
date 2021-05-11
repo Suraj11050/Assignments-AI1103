@@ -19,6 +19,8 @@
 \usepackage{longtable}
 \usepackage{multirow}
 
+\usepackage{amsthm}
+
 \usepackage{enumitem}
 \usepackage{mathtools}
 \usepackage{steinmetz}
@@ -115,6 +117,11 @@ columns=fullflexible
 \bigskip
 \renewcommand{\thetable}{\theenumi}
 \newcommand{\dsum}{\displaystyle\sum}
+\newcommand{\comb}[2]{{}^{#1}\mathrm{C}_{#2}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
 Download all python codes from 
 \begin{lstlisting}
 https://github.com/Suraj11050/Assignments-AI1103/tree/main/Assignment%204/Python%20codes
@@ -125,7 +132,6 @@ Download Latex-tikz codes from
 \begin{lstlisting}
 https://github.com/Suraj11050/Assignments-AI1103/blob/main/Assignment%204/Assignment%204.tex
 \end{lstlisting}
-
 \section{GATE 2021 (ST), Q.17 (STATISTICS SECTION)} 
 If the marginal probability density function of the $k^{th}$ order statistic of a 
 random sample of size 8 from a uniform distribution on $[0,2]$ is
@@ -137,16 +143,13 @@ random sample of size 8 from a uniform distribution on $[0,2]$ is
   \end{cases}
 \]
 then $k$ equals \underline{\hspace{3cm}}
-
 \bigskip
-
 \section{SOLUTION}
 Let $X\in[0,2]$ be a random variable of uniform order statistic distribution of sample size 8 then
 \begin{align}
  \int_{0}^{2} \pr{x}\,dx &= 1 \\
  \pr{x}                  &= \dfrac{1}{2}\;\brak{\because \text{Uniform order}}
 \end{align}
-
 The PDF for X is 
 \begin{align}
 \fn{x} = 
@@ -155,7 +158,6 @@ The PDF for X is
      0, &\text{otherwise,}
  \end{cases} \label{d}
 \end{align}
-
  The CDF for X is 
  
  \begin{align}
@@ -168,22 +170,30 @@ The PDF for X is
  
  Let $X_{(k)}$ be vector of order statistic of $(X_1,X_2\dots,X_n)$ 
  
+ \begin{lemma}
+ Marginal probability density (PDF) for a $k_{th}$ order statistic of a random sample of size n given CDF$=F(x)$ and
+ PDF$=\fn{x}$ is given by 
+ \begin{align}
+\nonumber f_{(k,n)}(x) = n\,\comb{n-1}{k-1}\,\brak{1-F(x)}^{n-k}F(x)^{k-1} f(x)
+ \end{align}                                                \label{1}
+ \end{lemma}
+ 
+\begin{proof}
  The CDF of the $k^{th}$ order statistic from a sample of size n is:
 \begin{align}
 \nonumber F_{(k,n)}(x) &= \pr{X_{(k)}\leq x} \\
-                       &= \dsum_{j=k}^{n}\,{n\choose j}\,\brak{1-F(x)}^{n-j} F(x)^{j}
+                       &= \dsum_{j=k}^{n}\,\comb{n}{j}\,\brak{1-F(x)}^{n-j} F(x)^{j}
 \end{align}
  
 Deriving PDF of $k^{th}$ order statistic from a sample of size n:
  
  \begin{align}
-\nonumber \dfrac{d}{dx} F_{(k,n)}(x) &= \dfrac{d}{dx}\brak{\dsum_{j=k}^{n}\,{n \choose j}\,\brak{1-F(x)}^{n-j} F(x)^{j}} 
+\nonumber \dfrac{d}{dx} F_{(k,n)}(x) &= \dfrac{d}{dx}\brak{\dsum_{j=k}^{n}\,\comb{n}{j}\,\brak{1-F(x)}^{n-j} F(x)^{j}} 
  \end{align}
 \begin{multline}
-\nonumber f_{(k,n)}(x) = \dsum_{j=k}^{n}\,{n \choose j}\,\brak{j}\brak{1-F(x)}^{n-j}F(x)^{j-1}\,f(x)  \\
-                -\dsum_{j=k}^{n}\,{n \choose j}\,\brak{n-j}\brak{1-F(x)}^{n-j-1}F(x)^{j}\,f(x) 
+\nonumber f_{(k,n)}(x) = \dsum_{j=k}^{n}\,\comb{n}{j}\,\brak{j}\brak{1-F(x)}^{n-j}F(x)^{j-1}\,f(x)  \\
+                -\dsum_{j=k}^{n}\,\comb{n}{j}\,\brak{n-j}\brak{1-F(x)}^{n-j-1}F(x)^{j}\,f(x) 
 \end{multline}
-
 \begin{align}
 S_1  &= \dsum_{j=k}^{n} \dfrac{n!}{(n-j)!\,(j-1)!}\brak{1-F(x)}^{n-j}F(x)^{j-1} f(x) \\
 S_2  &= \dsum_{j=k}^{n}\,\dfrac{n!}{(n-j-1)!\,j!}\brak{1-F(x)}^{n-j-1}F(x)^{j}\,f(x) \label{a}
@@ -192,43 +202,37 @@ let $i = j+1$ change the limits for the summation in equation \eqref{a}
 \begin{align}
 \nonumber S_2  &= \dsum_{i=k+1}^{n}\,\dfrac{n!}{(n-i)!\,(i-1)!}\brak{1-F(x)}^{n-i}F(x)^{i-1}\,f(x)  
 \end{align}
-
 \begin{multline}
 S_1 - S_2  =  \\
            \dfrac{n!}{(n-k)!\,(k-1)!}\brak{1-F(x)}^{n-k}F(x)^{k-1} f(x) 
 \end{multline}
 
- \newpage
- 
- PDF of $k_{th}$ order statistic from a sample of size n is :
 \begin{align}
-f_{(k,n)}(x) &= n\,{n-1 \choose k-1}\,\brak{1-F(x)}^{n-k}F(x)^{k-1} f(x) \label{b}
+f_{(k,n)}(x) &= n\,\comb{n-1}{k-1}\,\brak{1-F(x)}^{n-k}F(x)^{k-1} f(x) \label{b}
 \end{align}
-Given $n=8$ substituting n, equation \eqref{d} and equation \eqref{e}  in above equation \eqref{b} we get:
-\begin{align}
-\nonumber f_{(k,n)}(x) &= 8\,{7 \choose k-1}\,\brak{1-\dfrac{x}{2}}^{8-k}\brak{\dfrac{x}{2}}^{k-1} \dfrac{1}{2} \\
-f_{(k,n)}(x) &= \dfrac{1}{32}\,{7 \choose k-1}\,\brak{2-x}^{8-k}\,x^{k-1} \label{c} 
-\end{align}
+\end{proof}
 
+Using Lemma \eqref{1} given $n=8$ substituting n, equation \eqref{d} and equation \eqref{e}  in above equation \eqref{b} we get:
+
+\begin{align}
+\nonumber f_{(k,n)}(x) &= 8\,\comb{7}{k-1}\,\brak{1-\dfrac{x}{2}}^{8-k}\brak{\dfrac{x}{2}}^{k-1} \dfrac{1}{2} \\
+f_{(k,n)}(x) &= \dfrac{1}{32}\,\comb{7}{k-1}\,\brak{2-x}^{8-k}\,x^{k-1} \label{c} 
+\end{align}
 Comparing the marginal probability density function obtained in equation \eqref{c} with the equation given in question
 \begin{align}
-\nonumber \dfrac{1}{32}\,{7 \choose k-1}\,\brak{2-x}^{8-k}\,x^{k-1} &= \dfrac{7}{32}\,\brak{2-x}\,x^6 \\
+\nonumber \dfrac{1}{32}\,\comb{7}{k-1}\,\brak{2-x}^{8-k}\,x^{k-1} &= \dfrac{7}{32}\,\brak{2-x}\,x^6 \\
 \therefore k &= 7 
 \end{align}
 Hence the marginal probability density in the given problem is $7^{th}$ order uniform statistic and \textbf{the value of k is 7}
-
 \newpage
-
 \begin{figure}[htp]
     \centering
     \includegraphics[width = \columnwidth]{PDF.png}
     \label{fig:PDF  of X}
 \end{figure}
-
 \begin{figure}[htp]
     \centering
     \includegraphics[width = \columnwidth]{CDF.png}
     \label{fig:CDF of X}
 \end{figure}
-
 \end{document}
