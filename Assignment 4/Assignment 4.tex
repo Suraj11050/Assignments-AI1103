@@ -175,9 +175,9 @@ The PDF for X is
 $k^{th}$ order statistic : If the sample is arranged in an ascending order, the $k^{th}$ order statistic is the $k^{th}$ element from the left.$\;X_{(k)}$ is called $k^{th}$ vector of order statistic  
 For a sample $\{X_1, X_2, \cdots X_n\}$ of size n:
 \begin{align}
-\nonumber  X_{(1)} &= \min{\{X_1, X_2, \cdots X_n\}}\\
-\nonumber  X_{(n)} &= \max{\{X_1, X_2, \cdots X_n\}} \\
-\nonumber  X_{(1)} &\leq X_{(2)}\leq \cdots\leq X_{(k)}\leq \cdots \leq X_{(n)} 
+X_{(1)} &= \min{\{X_1, X_2, \cdots X_n\}}\\
+X_{(n)} &= \max{\{X_1, X_2, \cdots X_n\}} \\
+X_{(1)} &\leq X_{(2)}\leq \cdots\leq X_{(k)}\leq \cdots \leq X_{(n)} 
 \end{align}
 \end{definition}
 
@@ -188,24 +188,24 @@ Let $X_{(k)}$ be vector of order statistic of $(X_1,X_2\cdots,X_n)$
  Marginal probability density (PDF) for a $k_{th}$ order statistic of a random sample of size n given CDF$=F(x)$ and
  PDF$=\fn{x}$ is given by 
  \begin{align}
-\nonumber f_{(k,n)}(x) = n\,\comb{n-1}{k-1}\,\brak{1-F(x)}^{n-k}F(x)^{k-1} f(x)
+f_{(k,n)}(x) = n\,\comb{n-1}{k-1}\,\brak{1-F(x)}^{n-k}F(x)^{k-1} f(x)
  \end{align}                                                \label{1}
  \end{lemma}
  
 \begin{proof}
  The CDF of the $k^{th}$ order statistic from a sample of size n is:
 \begin{align}
-\nonumber F_{(k,n)}(x) &= \pr{X_{(k)}\leq x} \\
+F_{(k,n)}(x) &= \pr{X_{(k)}\leq x} \\
                        &= \dsum_{j=k}^{n}\,\comb{n}{j}\,\brak{1-F(x)}^{n-j} F(x)^{j}
 \end{align}
  
 Deriving PDF of $k^{th}$ order statistic from a sample of size n:
  
  \begin{align}
-\nonumber \dfrac{d}{dx} F_{(k,n)}(x) &= \dfrac{d}{dx}\brak{\dsum_{j=k}^{n}\,\comb{n}{j}\,\brak{1-F(x)}^{n-j} F(x)^{j}} 
+\dfrac{d}{dx} F_{(k,n)}(x) &= \dfrac{d}{dx}\brak{\dsum_{j=k}^{n}\,\comb{n}{j}\,\brak{1-F(x)}^{n-j} F(x)^{j}} 
  \end{align}
 \begin{multline}
-\nonumber f_{(k,n)}(x) = \dsum_{j=k}^{n}\,\comb{n}{j}\,\brak{j}\brak{1-F(x)}^{n-j}F(x)^{j-1}\,f(x)  \\
+f_{(k,n)}(x) = \dsum_{j=k}^{n}\,\comb{n}{j}\,\brak{j}\brak{1-F(x)}^{n-j}F(x)^{j-1}\,f(x)  \\
                 -\dsum_{j=k}^{n}\,\comb{n}{j}\,\brak{n-j}\brak{1-F(x)}^{n-j-1}F(x)^{j}\,f(x) 
 \end{multline}
 \begin{align}
@@ -214,7 +214,7 @@ S_2  &= \dsum_{j=k}^{n}\,\dfrac{n!}{(n-j-1)!\,j!}\brak{1-F(x)}^{n-j-1}F(x)^{j}\,
 \end{align}
 let $i = j+1$ change the limits for the summation in equation \eqref{a}
 \begin{align}
-\nonumber S_2  &= \dsum_{i=k+1}^{n}\,\dfrac{n!}{(n-i)!\,(i-1)!}\brak{1-F(x)}^{n-i}F(x)^{i-1}\,f(x)  
+S_2  &= \dsum_{i=k+1}^{n}\,\dfrac{n!}{(n-i)!\,(i-1)!}\brak{1-F(x)}^{n-i}F(x)^{i-1}\,f(x)  
 \end{align}
 \begin{multline}
 S_1 - S_2  =  \\
@@ -229,12 +229,12 @@ f_{(k,n)}(x) &= n\,\comb{n-1}{k-1}\,\brak{1-F(x)}^{n-k}F(x)^{k-1} f(x) \label{b}
 Using Lemma \eqref{1} given $n=8$ substituting n, equation \eqref{d} and equation \eqref{e}  in above equation \eqref{b} we get:
 
 \begin{align}
-\nonumber f_{(k,n)}(x) &= 8\,\comb{7}{k-1}\,\brak{1-\dfrac{x}{2}}^{8-k}\brak{\dfrac{x}{2}}^{k-1} \dfrac{1}{2} \\
+f_{(k,n)}(x) &= 8\,\comb{7}{k-1}\,\brak{1-\dfrac{x}{2}}^{8-k}\brak{\dfrac{x}{2}}^{k-1} \dfrac{1}{2} \\
 f_{(k,n)}(x) &= \dfrac{1}{32}\,\comb{7}{k-1}\,\brak{2-x}^{8-k}\,x^{k-1} \label{c} 
 \end{align}
 Comparing the marginal probability density function obtained in equation \eqref{c} with the equation given in question
 \begin{align}
-\nonumber \dfrac{1}{32}\,\comb{7}{k-1}\,\brak{2-x}^{8-k}\,x^{k-1} &= \dfrac{7}{32}\,\brak{2-x}\,x^6 \\
+\dfrac{1}{32}\,\comb{7}{k-1}\,\brak{2-x}^{8-k}\,x^{k-1} &= \dfrac{7}{32}\,\brak{2-x}\,x^6 \\
 \therefore k &= 7 
 \end{align}
 Hence the marginal probability density in the given problem is $7^{th}$ order uniform statistic and \textbf{the value of k is 7}
