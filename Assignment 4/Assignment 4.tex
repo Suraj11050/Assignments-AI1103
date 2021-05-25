@@ -6,6 +6,7 @@
 \usepackage[cmex10]{amsmath}
 
 \usepackage{amsthm}
+\usepackage{url}
 
 \usepackage{mathrsfs}
 \usepackage{txfonts}
@@ -107,6 +108,7 @@ columns=fullflexible
 \providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
 \newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
 \newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\newcommand{\Int}{\int\limits}
 \numberwithin{equation}{subsection}
 \makeatletter
 \vspace{3cm}
@@ -146,6 +148,7 @@ random sample of size 8 from a uniform distribution on $[0,2]$ is
 then $k$ equals \underline{\hspace{3cm}}
 \bigskip
 \section{SOLUTION}
+\textbf{Method 1:} \\
 Let $X\in[0,2]$ be a random variable of uniform order statistic distribution of sample size 8 then
 \begin{align}
  \int_{0}^{2} \pr{x}\,dx &= 1 \\
@@ -164,95 +167,79 @@ The PDF for X is
  \begin{align}
  F(x) = 
  \begin{cases}
-  \dfrac{x}{2},      &0<x<2, \\ 
-     0, &\text{otherwise,}
+      0,             &x \leq 0, \\ 
+  \dfrac{x}{2},      &0 < x< 2, \\ 
+     1,              & x>2
  \end{cases} \label{e}
  \end{align}
- 
-\newpage
-
-\begin{definition}
-$k^{th}$ order statistic : If the sample is arranged in an ascending order, the $k^{th}$ order statistic is the $k^{th}$ element from the left.$\;X_{(k)}$ is called $k^{th}$ vector of order statistic  
-For a sample $\{X_1, X_2, \cdots X_n\}$ of size n:
+ \begin{theorem}
+Let $\{X_1, X_2, \cdots X_n\}$ be n i.i.d random variables with common CDF $= F(x)$ and common PDF $= f(x)$, 
+then the marginal probability density of $k^{th}$ order statistic (PDF) is denoted by $f_{(k,n)}(x)$  and it
+is given by
 \begin{align}
-X_{(1)} &= \min{\{X_1, X_2, \cdots X_n\}}\\
-X_{(n)} &= \max{\{X_1, X_2, \cdots X_n\}} \\
-X_{(1)} &\leq X_{(2)}\leq \cdots\leq X_{(k)}\leq \cdots \leq X_{(n)} 
+f_{(k,n)}(x) = n\;\comb{n-1}{k-1}\,f(x)\,(F(x))^{k-1}\,\brak{1-F(x)}^{n-k} \label{eqn_2}
 \end{align}
-\end{definition}
-
-\bigskip
-
-Let $X_{(k)}$ be vector of order statistic of $(X_1,X_2\cdots,X_n)$ 
- \begin{lemma}
- Marginal probability density (PDF) for a $k_{th}$ order statistic of a random sample of size n given CDF$=F(x)$ and
- PDF$=\fn{x}$ is given by 
- \begin{align}
-f_{(k,n)}(x) = n\,\comb{n-1}{k-1}\,\brak{1-F(x)}^{n-k}F(x)^{k-1} f(x)
- \end{align}                                                \label{1}
- \end{lemma}
- 
-\begin{proof}
- The CDF of the $k^{th}$ order statistic from a sample of size n is:
+\end{theorem}
+PDF of $k^{th}$ order statistic of given sample from equation \eqref{eqn_2}
 \begin{align}
-F_{(k,n)}(x) &= \pr{X_{(k)}\leq x} \\
-                       &= \dsum_{j=k}^{n}\,\comb{n}{j}\,\brak{1-F(x)}^{n-j} F(x)^{j}
-\end{align}
- 
-Deriving PDF of $k^{th}$ order statistic from a sample of size n:
- 
- \begin{align}
-\dfrac{d}{dx} F_{(k,n)}(x) &= \dfrac{d}{dx}\brak{\dsum_{j=k}^{n}\,\comb{n}{j}\,\brak{1-F(x)}^{n-j} F(x)^{j}} 
+f_{(k,n)}(x) &= n\;\comb{n-1}{k-1}\,\dfrac{1}{2}\,\brak{\dfrac{x}{2}}^{k-1}\,\brak{1-\dfrac{x}{2}}^{n-k} \\
+f_{(k,8)}(x) &= \dfrac{8}{2^{(1+(k-1)+(8-k))}}\times\comb{7}{k-1}\,x^{k-1}\,\brak{2-x}^{8-k}\\
+f_{(k,8)}(x) &= \comb{7}{k-1}\,\dfrac{1}{32}\,x^{k-1}\,\brak{2-x}^{8-k} \label{c}
  \end{align}
-\begin{multline}
-f_{(k,n)}(x) = \dsum_{j=k}^{n}\,\comb{n}{j}\,\brak{j}\brak{1-F(x)}^{n-j}F(x)^{j-1}\,f(x)  \\
-                -\dsum_{j=k}^{n}\,\comb{n}{j}\,\brak{n-j}\brak{1-F(x)}^{n-j-1}F(x)^{j}\,f(x) 
-\end{multline}
-\begin{align}
-S_1  &= \dsum_{j=k}^{n} \dfrac{n!}{(n-j)!\,(j-1)!}\brak{1-F(x)}^{n-j}F(x)^{j-1} f(x) \\
-S_2  &= \dsum_{j=k}^{n}\,\dfrac{n!}{(n-j-1)!\,j!}\brak{1-F(x)}^{n-j-1}F(x)^{j}\,f(x) \label{a}
-\end{align}
-let $i = j+1$ change the limits for the summation in equation \eqref{a}
-\begin{align}
-S_2  &= \dsum_{i=k+1}^{n}\,\dfrac{n!}{(n-i)!\,(i-1)!}\brak{1-F(x)}^{n-i}F(x)^{i-1}\,f(x)  
-\end{align}
-\begin{multline}
-S_1 - S_2  =  \\
-           \dfrac{n!}{(n-k)!\,(k-1)!}\brak{1-F(x)}^{n-k}F(x)^{k-1} f(x) 
-\end{multline}
-
-\begin{align}
-f_{(k,n)}(x) &= n\,\comb{n-1}{k-1}\,\brak{1-F(x)}^{n-k}F(x)^{k-1} f(x) \label{b}
-\end{align}
-\end{proof}
-
-Using Lemma \eqref{1} given $n=8$ substituting n, equation \eqref{d} and equation \eqref{e}  in above equation \eqref{b} we get:
-
-\begin{align}
-f_{(k,n)}(x) &= 8\,\comb{7}{k-1}\,\brak{1-\dfrac{x}{2}}^{8-k}\brak{\dfrac{x}{2}}^{k-1} \dfrac{1}{2} \\
-f_{(k,n)}(x) &= \dfrac{1}{32}\,\comb{7}{k-1}\,\brak{2-x}^{8-k}\,x^{k-1} \label{c} 
-\end{align}
-Comparing the marginal probability density function obtained in equation \eqref{c} with the equation given in question
+Comparing the PDF obtained in equation \eqref{c} with the equation given in question
 \begin{align}
 \dfrac{1}{32}\,\comb{7}{k-1}\,\brak{2-x}^{8-k}\,x^{k-1} &= \dfrac{7}{32}\,\brak{2-x}\,x^6 \\
 \therefore k &= 7 
 \end{align}
-Hence the marginal probability density in the given problem is $7^{th}$ order uniform statistic and \textbf{the value of k is 7}
+Hence the marginal probability density given is $7^{th}$ order statistic and 
+\textbf{the value of k is 7}
+\null \par \null
+\textbf{Method 2:}\\
+we know that, PDF of $k^{th}$ order statistic of a uniform distribution on $[0,1]$ follows 
+beta distribution
+\begin{align}
+\Int_{0}^{2}f(x)\,dx &= \Int_{0}^{2} \dfrac{7}{32}\,x^{6}\,\brak{2-x}\,dx \\
+\Int_{0}^{2}f(x)\,dx &= \Int_{0}^{2} 56\,\brak{\dfrac{x}{2}}^{6}\,\brak{1-\dfrac{x}{2}}\,d\brak{\dfrac{x}{2}}
+\end{align}
+Let new random variable be $t$ such that $t=x/2$, New sample be $\{T_1,\cdots T_8\}$ such that $T_{i}=X_{i}/2$.
+
+\newpage
+
+\begin{align}
+f(t) &= 56\,t^{6}\,\brak{1-t} \\
+\Int_{0}^{2}f(x)\,dx &=  \Int_{0}^{1}f(t)\,dt = 1
+\end{align}
+The Uniform distribution of new random sample is on $[0,1]$ such that   PDF $= 1$ and CDF $= t$ \\
+Given $k^{th}$ order statistic (after conversion)
+\begin{align}
+f_{(k,8)}(t) =
+  \begin{cases}
+      56\,t^{6}\,\brak{1-t},  & 0<t<1, \\ 
+      \hspace{1cm}   0,               & \text{otherwise,} 
+  \end{cases}
+  \label{pdf_t}
+\end{align}
+Since equation \eqref{pdf_t} is a Beta distribution with $r=k$, $s=n-k+1$  
+\begin{align}
+r-1 = k-1 &= 6 \\
+\therefore k &= 7 
+\end{align}
+Hence the \textbf{value of k is 7}
+\null \par \null
+\textbf{Presentation link :} 
+\null \par
+\textcolor{blue}{\url{https://github.com/Suraj11050/Assignments-AI1103/tree/main/Assignment 4 presentation}}
+
+\newpage
 
 \begin{figure}[htp]
     \centering
-    \includegraphics[width = \columnwidth]{MPD.png}
-    \label{fig:maginal probability density}
-    \caption{PDF for order statistics at k=7}
-
-    \centering
-    \includegraphics[width = \columnwidth]{PDF.png}
-    \label{fig:PDF  of X}
-    \caption{PDF for uniform distribution}
-   
-    \centering
-    \includegraphics[width = \columnwidth]{CDF.png}
-    \label{fig:CDF of X}
-    \caption{CDF for uniform distribution}
+    \includegraphics[width = \columnwidth]{MPD_1.png}
+    \label{fig:maginal probability density 1}
+    \caption{PDF of $f_{(7,8)}(x)$}
+\centering
+    \includegraphics[width = \columnwidth]{MPD_2.png}
+    \label{fig:maginal probability density 2}
+    \caption{PDF of $f_{(7,8)}(t)$}
 \end{figure}
 \end{document}
