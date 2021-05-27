@@ -122,6 +122,9 @@ columns=fullflexible
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\Int}{\int\limits}
+\newcommand{\Beta}{B}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
 \newtheorem{theorem}{Theorem}[section]
 Download all python codes from 
 \begin{lstlisting}
@@ -146,6 +149,70 @@ random sample of size 8 from a uniform distribution on $[0,2]$ is
 then $k$ equals \underline{\hspace{3cm}}
 \bigskip
 \section{SOLUTION}
+\begin{definition}
+For given statistical sample $\{X_1, X_2,\cdots X_n\}$, the order statistics is obtained by sorting the
+sample in ascending order. It denoted as $\{X_{(1)}, X_{(2)},\cdots X_{(n)}\}$. The $k^{th}$ smallest value
+$X_{(k)}$ is called  $k^{th}$ order statistic 
+\end{definition}
+\begin{theorem}
+Let $\{X_1, X_2, \cdots X_n\}$ be n i.i.d random variables with common CDF $= F(x)$ and common PDF $= f(x)$, 
+then the marginal probability distribution of $k^{th}$ order statistic (CDF) is denoted by $F_{(k,n)}(x)$ 
+and it is given by
+\begin{align}
+F_{(k,n)}(x) =  \sum_{j=k}^{n}\comb{n}{j}\times \brak{F(x)}^{j}\times\brak{1-F(x)}^{n-j} \label{eqn_1}
+\end{align}
+\label{th1}
+\end{theorem}
+\begin{proof}
+\begin{align}
+F_{(k,n)}(x) &= \pr{X_{(k)}\leq x} \\
+\nonumber F_{(k,n)}(x) &= \pr{\text{At least k elements have value $\leq x$}}
+\end{align}
+\begin{multline}
+F_{(k,n)}(x) =\comb{n}{k}\pr{X\leq x}^{k}\pr{X>x}^{n-k} + \\
+\comb{n}{k+1}\pr{X\leq x}^{k+1}\pr{X>x}^{n-(k+1)} +  \\
+\cdots \cdots \comb{n}{n}\pr{X\leq x}^{n}\pr{X>x}^{0}
+\end{multline}
+\begin{align}
+F_{(k,n)}(x) &=\sum_{j=k}^{n}\comb{n}{j} \pr{X\leq x}^{j}\pr{X>x}^{(n-j)} \\
+\therefore F_{(k,n)}(x) &=  \sum_{j=k}^{n}\comb{n}{j}\times \brak{F(x)}^{j}\times\brak{1-F(x)}^{n-j} 
+\end{align}
+\end{proof}
+
+\begin{theorem}
+Let $\{X_1, X_2, \cdots X_n\}$ be n i.i.d random variables with common CDF $= F(x)$ and common PDF $= f(x)$, 
+then the marginal probability density of $k^{th}$ order statistic (PDF) is denoted by $f_{(k,n)}(x)$  and it
+is given by
+\begin{align}
+f_{(k,n)}(x) = n\;\comb{n-1}{k-1}\,f(x)\,(F(x))^{k-1}\,\brak{1-F(x)}^{n-k} \label{eqn_2}
+\end{align}
+\label{th2}
+\end{theorem}
+\begin{proof}
+\begin{align}
+\dfrac{d}{dx} F_{(k,n)}(x) &= \dfrac{d}{dx}\brak{\sum_{j=k}^{n}\,\comb{n}{j}\,\brak{1-F(x)}^{n-j} F(x)^{j}} 
+ \end{align}
+\begin{multline}
+f_{(k,n)}(x) = \sum_{j=k}^{n}\,\comb{n}{j}\,\brak{j}\brak{1-F(x)}^{n-j}F(x)^{j-1}\,f(x)  \\
+                -\sum_{j=k}^{n}\,\comb{n}{j}\,\brak{n-j}\brak{1-F(x)}^{n-j-1}F(x)^{j}\,f(x) 
+\end{multline}
+\begin{align}
+S_1  &= \sum_{j=k}^{n} \dfrac{n!}{(n-j)!\,(j-1)!}\brak{1-F(x)}^{n-j}F(x)^{j-1} f(x) 
+\end{align}
+\begin{align}
+S_2  &= \sum_{j=k}^{n}\,\dfrac{n!}{(n-j-1)!\,j!}\brak{1-F(x)}^{n-j-1}F(x)^{j}\,f(x) \label{a}
+\end{align}
+let $i = j+1$ change the limits for the summation in equation \eqref{a}
+\begin{align}
+S_2  &= \sum_{i=k+1}^{n}\,\dfrac{n!}{(n-i)!\,(i-1)!}\brak{1-F(x)}^{n-i}F(x)^{i-1}\,f(x)
+\end{align}
+\begin{align}
+f_{(k,n)}(x) &= S_1 - S_2 \\
+f_{(k,n)}(x) &= \dfrac{n!\,f(x)\brak{1-F(x)}^{n-k}F(x)^{k-1}}{(n-k)!\,(k-1)!}\\
+\therefore f_{(k,n)}(x) &= n\,\comb{n-1}{k-1}\,\brak{1-F(x)}^{n-k}F(x)^{k-1} f(x)
+\end{align}
+\end{proof}
+\bigskip
 \textbf{Method 1:} \\
 Let $X\in[0,2]$ be a random variable of uniform order statistic distribution of sample size 8 then
 \begin{align}
@@ -167,18 +234,10 @@ The PDF for X is
  \begin{cases}
       0,             &x \leq 0, \\ 
   \dfrac{x}{2},      &0 < x< 2, \\ 
-     1,              & x>2
+     1,              & x\geq2
  \end{cases} \label{e}
  \end{align}
- \begin{theorem}
-Let $\{X_1, X_2, \cdots X_n\}$ be n i.i.d random variables with common CDF $= F(x)$ and common PDF $= f(x)$, 
-then the marginal probability density of $k^{th}$ order statistic (PDF) is denoted by $f_{(k,n)}(x)$  and it
-is given by
-\begin{align}
-f_{(k,n)}(x) = n\;\comb{n-1}{k-1}\,f(x)\,(F(x))^{k-1}\,\brak{1-F(x)}^{n-k} \label{eqn_2}
-\end{align}
-\end{theorem}
-PDF of $k^{th}$ order statistic of given sample from equation \eqref{eqn_2}
+Using theorem \eqref{th2} PDF of $k^{th}$ order statistic of given sample from equation \eqref{eqn_2}
 \begin{align}
 f_{(k,n)}(x) &= n\;\comb{n-1}{k-1}\,\dfrac{1}{2}\,\brak{\dfrac{x}{2}}^{k-1}\,\brak{1-\dfrac{x}{2}}^{n-k} \\
 f_{(k,8)}(x) &= \dfrac{8}{2^{(1+(k-1)+(8-k))}}\times\comb{7}{k-1}\,x^{k-1}\,\brak{2-x}^{8-k}\\
@@ -190,8 +249,55 @@ Comparing the PDF obtained in equation \eqref{c} with the equation given in ques
 \therefore k &= 7 
 \end{align}
 Hence the marginal probability density given is $7^{th}$ order statistic and 
-\textbf{the value of k is 7}
-\null \par \null
+\textbf{the value of k is 7} 
+\vspace{0.5cm}
+\hrule
+\vspace{0.5cm}
+\begin{definition}
+\label{def2}
+\textbf{Uniform order statistics} \\
+Let $\{X_1,\cdots X_n\}$ be i.i.d form a uniform distribution on $[0,1]$ such that $f(x) = 1$ and $F(x)=x$,
+from theorem \eqref{th2}, equation \eqref{eqn_2}
+\begin{align}
+f_{(k,n)}(x) &= n\;\comb{n-1}{k-1}\,x^{k-1}\,\brak{1-x}^{n-k}\label{eqn_3}
+\end{align}
+Since equation \eqref{eqn_3} is PDF 
+\begin{equation}
+ \Int_{0}^{1} n\;\comb{n-1}{k-1}\,x^{k-1}\,\brak{1-x}^{n-k} \,dx  = 1    
+\end{equation}
+\begin{align}
+\Int_{0}^{1} x^{k-1}\,\brak{1-x}^{n-k} \,dx  &= \dfrac{(k-1)!\,(n-k)!}{n!}  \\
+\Int_{0}^{1} x^{k-1}\,\brak{1-x}^{n-k} \,dx  &= \dfrac{\Gamma(k)\,\Gamma(n-k+1)}{\Gamma\brak{(n-k+1)+k)}} 
+\label{beqn}
+\end{align}
+\label{def3}
+\end{definition}
+\begin{definition}
+\textbf{Beta function}\\
+From definition \eqref{def2}, equation \eqref{beqn} let $r = k$ and $s = n-k+1$ The \textbf{Beta function} is
+defined for r, s $> 0$
+\begin{equation}
+\Beta(r,s) = \Int_{0}^{1} x^{r-1}\,\brak{1-x}^{s-1}\,dx = \dfrac{\Gamma(r)\,\Gamma(s)}{\Gamma(r+s)} 
+\label{eqn_5}
+\end{equation}
+\end{definition}
+\textbf{Beta Distribution} \\
+The Beta distribution is a continuous distribution defined on the range $(0,1)$ whose PDF given by 
+\begin{align}
+f(x) &= \dfrac{1}{\Beta(r,s)}\,x^{r-1}\,\brak{1-x}^{s-1} 
+\end{align}
+where $\Int_{0}^1f(x) = 1$ as per definition \eqref{def3} 
+\newpage
+CDF, Mean value and Variance of Beta distribution
+\begin{align}
+ F(x)   &=\dfrac{\Int_{0}^{x}x^{r-1}\,\brak{1-x}^{s-1}}{\Beta(r,s)} =    \dfrac{\Beta_{x}(r,s)}{\Beta(r,s)} \\
+ E(x)   &=   \dfrac{r}{r+s} \\
+ Var(x) &= \dfrac{rs}{(r+s)^{2}\,(r+s+1)}
+\end{align}
+In Uniform order statistics on [0,1] the PDF of $k^{th}$ order statistic follows Beta distribution with $r=k$, $s=n-k+1$ and PDF is given by 
+\begin{align}
+f(x) &= \dfrac{1}{\Beta(k,n-k+1)}\,x^{k-1}\,\brak{1-x}^{(n-k+1)-1} 
+\end{align}
 \textbf{Method 2:}\\
 we know that, PDF of $k^{th}$ order statistic of a uniform distribution on $[0,1]$ follows 
 beta distribution
@@ -200,8 +306,6 @@ beta distribution
 \Int_{0}^{2}f(x)\,dx &= \Int_{0}^{2} 56\,\brak{\dfrac{x}{2}}^{6}\,\brak{1-\dfrac{x}{2}}\,d\brak{\dfrac{x}{2}}
 \end{align}
 Let new random variable be $t$ such that $t=x/2$, New sample be $\{T_1,\cdots T_8\}$ such that $T_{i}=X_{i}/2$.
-
-\newpage
 
 \begin{align}
 f(t) &= 56\,t^{6}\,\brak{1-t} \\
@@ -223,13 +327,9 @@ r-1 = k-1 &= 6 \\
 \therefore k &= 7 
 \end{align}
 Hence the \textbf{value of k is 7}
-\null \par \null
-\textbf{Presentation link :} 
-\null \par
-\url{https://github.com/Suraj11050/Assignments-AI1103/tree/main/Assignment 4 presentation}
-
+\vspace{0.5cm}
+\hrule
 \newpage
-
 \begin{figure}[htp]
     \centering
     \includegraphics[width = \columnwidth]{MPD_1.png}
@@ -240,4 +340,8 @@ Hence the \textbf{value of k is 7}
     \label{fig:maginal probability density 2}
     \caption{PDF of $f_{(7,8)}(t)$}
 \end{figure}
+\begin{center}
+\textbf{Presentation link:} \\
+\url{https://github.com/Suraj11050/Assignments-AI1103/tree/main/Assignment 4 presentation}
+\end{center}
 \end{document}
