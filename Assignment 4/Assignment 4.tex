@@ -147,7 +147,7 @@ random sample of size 8 from a uniform distribution on $[0,2]$ is
   \end{cases}
 \]
 then $k$ equals \underline{\hspace{3cm}}
-\bigskip
+\vspace{0.2cm}
 \section{SOLUTION}
 \begin{definition}
 For given statistical sample $\{X_1, X_2,\cdots X_n\}$, the order statistics is obtained by sorting the
@@ -166,15 +166,18 @@ F_{(k,n)}(x) =  \sum_{j=k}^{n}\comb{n}{j}\times \brak{F(x)}^{j}\times\brak{1-F(x
 \begin{proof}
 \begin{align}
 F_{(k,n)}(x) &= \pr{X_{(k)}\leq x} \\
-\nonumber F_{(k,n)}(x) &= \pr{\text{At least k elements have value $\leq x$}}
+F_{(k,n)}(x) &= \pr{\text{At least k elements have value $\leq x$}} \label{kcdf}
 \end{align}
-\begin{multline}
-F_{(k,n)}(x) =\comb{n}{k}\pr{X\leq x}^{k}\pr{X>x}^{n-k} + \\
-\comb{n}{k+1}\pr{X\leq x}^{k+1}\pr{X>x}^{n-(k+1)} +  \\
-\cdots \cdots \comb{n}{n}\pr{X\leq x}^{n}\pr{X>x}^{0}
-\end{multline}
+let $\pr{X\leq x} = p$, P be a random variable that follows binomial distribution B(n,p). 
 \begin{align}
-F_{(k,n)}(x) &=\sum_{j=k}^{n}\comb{n}{j} \pr{X\leq x}^{j}\pr{X>x}^{(n-j)} \\
+\pr{X\leq x} &= F(x) = p \\
+\pr{P=a} &= \comb{n}{a}\,p^{a}\,\brak{1-p}^{n-a} \label{bin} 
+\end{align}
+Equation \eqref{bin} is probability of having values of $a$ random variables less than equal to x.  \\
+From above equation \eqref{kcdf}
+\begin{align}
+F_{(k,n)}(x) &= \pr{P\geq k} \\
+F_{(k,n)}(x) &=\sum_{j=k}^{n}\comb{n}{j}\,p^{j}\,(1-p)^{(n-j)} \\
 \therefore F_{(k,n)}(x) &=  \sum_{j=k}^{n}\comb{n}{j}\times \brak{F(x)}^{j}\times\brak{1-F(x)}^{n-j} 
 \end{align}
 \end{proof}
@@ -239,7 +242,9 @@ The PDF for X is
  \end{align}
 Using theorem \eqref{th2} PDF of $k^{th}$ order statistic of given sample from equation \eqref{eqn_2}
 \begin{align}
-f_{(k,n)}(x) &= n\;\comb{n-1}{k-1}\,\dfrac{1}{2}\,\brak{\dfrac{x}{2}}^{k-1}\,\brak{1-\dfrac{x}{2}}^{n-k} \\
+f_{(k,n)}(x) &= n\;\comb{n-1}{k-1}\,\dfrac{1}{2}\,\brak{\dfrac{x}{2}}^{k-1}\,\brak{1-\dfrac{x}{2}}^{n-k} 
+\end{align}
+\begin{align}
 f_{(k,8)}(x) &= \dfrac{8}{2^{(1+(k-1)+(8-k))}}\times\comb{7}{k-1}\,x^{k-1}\,\brak{2-x}^{8-k}\\
 f_{(k,8)}(x) &= \comb{7}{k-1}\,\dfrac{1}{32}\,x^{k-1}\,\brak{2-x}^{8-k} \label{c}
  \end{align}
@@ -280,6 +285,7 @@ defined for r, s $> 0$
 \Beta(r,s) = \Int_{0}^{1} x^{r-1}\,\brak{1-x}^{s-1}\,dx = \dfrac{\Gamma(r)\,\Gamma(s)}{\Gamma(r+s)} 
 \label{eqn_5}
 \end{equation}
+\newpage
 \end{definition}
 \textbf{Beta Distribution} \\
 The Beta distribution is a continuous distribution defined on the range $(0,1)$ whose PDF given by 
@@ -287,7 +293,7 @@ The Beta distribution is a continuous distribution defined on the range $(0,1)$ 
 f(x) &= \dfrac{1}{\Beta(r,s)}\,x^{r-1}\,\brak{1-x}^{s-1} 
 \end{align}
 where $\Int_{0}^1f(x) = 1$ as per definition \eqref{def3} 
-\newpage
+
 CDF, Mean value and Variance of Beta distribution
 \begin{align}
  F(x)   &=\dfrac{\Int_{0}^{x}x^{r-1}\,\brak{1-x}^{s-1}}{\Beta(r,s)} =    \dfrac{\Beta_{x}(r,s)}{\Beta(r,s)} \\
@@ -329,7 +335,6 @@ r-1 = k-1 &= 6 \\
 Hence the \textbf{value of k is 7}
 \vspace{0.5cm}
 \hrule
-\newpage
 \begin{figure}[htp]
     \centering
     \includegraphics[width = \columnwidth]{MPD_1.png}
