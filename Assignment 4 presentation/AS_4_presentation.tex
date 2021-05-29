@@ -205,7 +205,7 @@ Equation \eqref{eqn_2} gives $X_{(1)}$ and $X_{(n)}$ as:
 \end{align}
 \end{block}
 \end{frame}
-
+%slide 10
 \begin{frame}{Proof of theorem \eqref{th2} by differentiating CDF :}
 \begin{proofs}[Theorem \eqref{th2} Proof]
 PDF of $k^{th}$ order statistic by differentiating $F_{(k,n)}(x)$ w.r.t x 
@@ -219,7 +219,7 @@ f_{(k,n)}(x) = \sum_{j=k}^{n}\,\comb{n}{j}\,\brak{j}\brak{1-F(x)}^{n-j}F(x)^{j-1
 Let $S_1$, $S_2$ be summations such that $f_{(k,n)}(x) = S_1 - S_2$
 \end{proofs}
 \end{frame}
-%slide 10
+%slide 11
 \begin{frame}{Proof of theorem \eqref{th2} by differentiating CDF :}
 \begin{proofs}[Theorem \eqref{th2} Proof contd]
 \begin{align}
@@ -233,7 +233,7 @@ S_1 - S_2  &= \dfrac{n!}{(n-k)!\,(k-1)!}\brak{1-F(x)}^{n-k}F(x)^{k-1} f(x)
 \end{align}
 \end{proofs}
 \end{frame}
-
+%slide 12
 \begin{frame}{Proof of theorem \eqref{th2} by differentiating CDF :}
 \begin{proof}[Theorem \eqref{th2} Proof contd]
 \begin{align}
@@ -245,7 +245,7 @@ f_{(k,n)}(x) &= n\,\comb{n-1}{k-1}\,\brak{1-F(x)}^{n-k}F(x)^{k-1} f(x)
 \end{equation}
 \end{proof}
 \end{frame}
-
+%slide 13
 \begin{frame}{Proof of theorem \eqref{th2} in a simpler way:}
 \begin{proof}[Theorem \eqref{th2} Proof]
 let us assume $X_{(k)}\in[x,x+dx]$ for $dx \to 0$. Solving using 4 sub -jobs
@@ -263,7 +263,7 @@ let us assume $X_{(k)}\in[x,x+dx]$ for $dx \to 0$. Solving using 4 sub -jobs
 \end{align}
 \end{proof}
 \end{frame}
-%slide 11
+%slide 14
 \begin{frame}{Uniform order statistics}
 \begin{block}{Introduction}
 Let $\{X_1,\cdots X_n\}$ be i.i.d form a uniform distribution on $[0,1]$ such that $f(x) = 1$ and $F(x)=x$,
@@ -279,7 +279,7 @@ Since equation \eqref{eqn_3} is marginal probability density (PDF)
 \end{align}
 \end{block}
 \end{frame}
-%slide 12
+%slide 15
 \begin{frame}{Uniform order statistics}
 \begin{block}{Introduction contd}
 \begin{align}
@@ -294,7 +294,7 @@ let $r = k$ and $s = n-k+1$ The \textbf{Beta function} is defined for r, s $> 0$
 \end{equation}
 \end{definition}
 \end{frame}
-%slide 13
+%slide 16
 \begin{frame}{Beta function}
 \begin{block}{Substituting in equation \eqref{eqn_6} and \eqref{eqn_3}}
 By using the above definition and equation 
@@ -310,7 +310,7 @@ f(x) &= \dfrac{1}{\Beta(r,s)}\,x^{r-1}\,\brak{1-x}^{s-1}
 \end{align}
 \end{block}
 \end{frame}
-%slide 14
+%slide 17
 \begin{frame}{Beta Distribution}
 \begin{block}{Beta distribution contd}
 Let $\Beta_{x}(r,s)=\Int_{0}^{x} x^{r-1}\,\brak{1-x}^{s-1}\,dx$, CDF of Beta distribution:
@@ -323,7 +323,7 @@ Let $\Beta_{x}(r,s)=\Int_{0}^{x} x^{r-1}\,\brak{1-x}^{s-1}\,dx$, CDF of Beta dis
 \end{equation}
 \end{block}
 \end{frame}
-%slide 15
+%slide 18
 \begin{frame}{Beta distribution}
 \begin{block}{Mean value of Beta distribution}
 \begin{align}
@@ -337,7 +337,7 @@ Let $\Beta_{x}(r,s)=\Int_{0}^{x} x^{r-1}\,\brak{1-x}^{s-1}\,dx$, CDF of Beta dis
 \end{equation}
 \end{block}
 \end{frame}
-%slide 16
+%slide 19
 \begin{frame}{Beta distribution}
 \begin{block}{Variance of Beta distribution}
 \begin{align}
@@ -349,7 +349,7 @@ Let $\Beta_{x}(r,s)=\Int_{0}^{x} x^{r-1}\,\brak{1-x}^{s-1}\,dx$, CDF of Beta dis
 \end{align}
 \end{block}
 \end{frame}
-%slide 17
+%slide 20
 \begin{frame}{Beta Distribution}
 \begin{block}{Variance of Beta distribution contd}
 \begin{align}
@@ -363,7 +363,7 @@ Let $\Beta_{x}(r,s)=\Int_{0}^{x} x^{r-1}\,\brak{1-x}^{s-1}\,dx$, CDF of Beta dis
 \end{equation}
 \end{block}
 \end{frame}
-%slide 18
+%slide 21
 \begin{frame}{Beta Distribution}
 \begin{block}{Beta distribution summary}
 PDF, CDF, Expectation value and Variance of Beta distribution
@@ -377,22 +377,22 @@ In Uniform order statistics on [0,1] the PDF of $k^{th}$ order statistic follows
 $f_{(k,n)}(x)$  from the above equation \eqref{eqn_7}
 \end{block}
 \end{frame}
-%slide 19
+%slide 22
 \begin{frame}{Gate problem}
 \begin{block}{GATE 2021 (ST), Q.17 (STATISTICS SECTION)}
 If the marginal probability density function of the $k^{th}$ order statistic of a 
 random sample of size 8 from a uniform distribution on $[0,2]$ is
-\[
-  f(x) =
+\begin{align}
+ \nonumber f(x) =
   \begin{cases}
    \dfrac{7}{32}\,x^{6}\,\brak{2-x},  & 0<x<2, \\ 
       \hspace{1cm}   0,               & \text{otherwise,} 
   \end{cases}
-\]
+\end{align}
 then $k$ equals \underline{\hspace{3cm}}
 \end{block}
 \end{frame}
-%slide 20
+%slide 23
 \begin{frame}{Solution (Using Theorem\eqref{th2})}
 \textbf{Method 1:}\\
 The problem involves the uniform order statistics on $[0,2]$, sample size 8, we begin the solution by finding the PDF of the given sample:
@@ -405,7 +405,7 @@ CDF of the given sample:
 F(x) = \Int_{0}^{x}f(x)\,dx = \dfrac{x}{2} \label{cdf}
 \end{equation}
 \end{frame}
-%slide 21
+%slide 24
 \begin{frame}{Solution (Using Theorem\eqref{th2})}
 Using Theorem \eqref{th2} PDF of $k^{th}$ order statistic is given by 
 \begin{align}
@@ -420,7 +420,7 @@ Comparing equation \eqref{eqn_8} with the given PDF of $k^{th}$ order statistic
 \therefore k = 7 
 \end{align}
 \end{frame}
-%slide 22
+%slide 25
 \begin{frame}{PDF and CDF of Uniform Distribution}
 The plots of PDF, CDF of uniform statistics in equations \eqref{pdf} and \eqref{cdf}:
  \begin{figure}%
@@ -433,7 +433,7 @@ The plots of PDF, CDF of uniform statistics in equations \eqref{pdf} and \eqref{
  
 \end{figure}
 \end{frame}
-%slide 23
+%slide 26
 \begin{frame}{Solution(Using Beta distribution)}
 \textbf{Method 2:}\\
 Since the $k^{th}$ order statistic of a uniform distribution on $[0,1]$ follows Beta distribution, convert 
@@ -447,7 +447,7 @@ the random variables, given PDF in $[0,1]$ range
 \end{equation}
 Let new random variable be $t$ such that $t=x/2$, New sample be $\{T_1,\cdots T_8\}$ such that $T_{i}=X_{i}/2$.
 \end{frame}
-%slide 24
+%slide 27
 \begin{frame}{Solution(Using Beta distribution)}
 The Uniform distribution of new random sample is on $[0,1]$ such that $f(t)=1$ and $    F(t)=t$ 
 \begin{align}
@@ -468,7 +468,7 @@ k-1 &= 6 \\
 \therefore k = 7 
 \end{align}
 \end{frame}
-%slide 25
+%slide 28
 \begin{frame}{Plots of PDF of $k^{th}$ order statistic}
 The plots for given PDF and PDF in equation \eqref{eqn_9} are shown below:
  \begin{figure}%
@@ -481,8 +481,7 @@ The plots for given PDF and PDF in equation \eqref{eqn_9} are shown below:
  
 \end{figure}
 \end{frame}
-
-
+%slide 29
 \begin{frame}
    \centering
     \textcolor{blue}{\Huge{\textbf{THANK YOU}}} 
