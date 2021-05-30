@@ -169,16 +169,19 @@ F_{(k,n)}(x) =  \sum_{j=k}^{n}\comb{n}{j}\times \brak{F(x)}^{j}\times\brak{1-F(x
 F_{(k,n)}(x) &= \pr{X_{(k)}\leq x} \\
 F_{(k,n)}(x) &= \pr{\text{At least k elements have value $\leq x$}} \label{kcdf}
 \end{align}
-let $\pr{X\leq x} = p$, P be a random variable that follows binomial distribution B(n,p). 
+let $p \sim Bern(\pr{X\leq x})$ such that   
 \begin{align}
-\pr{X\leq x} &= F(x) = p \\
-\pr{P=a} &= \comb{n}{a}\,p^{a}\,\brak{1-p}^{n-a} \label{bin} 
+\pr{p=1} &= \pr{X\leq x} = F(x) \\
+\pr{p=0} &= 1-\pr{X\leq x} = 1-F(x)
 \end{align}
-Equation \eqref{bin} is probability of having values of $a$ random variables less than equal to x.  \\
-From above equation \eqref{kcdf}
+Let $P$ follows Binomial distribution taking $n$ independent trails from above Bernoulli's distribution    
 \begin{align}
-F_{(k,n)}(x) &= \pr{P\geq k} \\
-F_{(k,n)}(x) &=\sum_{j=k}^{n}\comb{n}{j}\,p^{j}\,(1-p)^{(n-j)} \\
+\pr{P=a} &= \comb{n}{a}\,\pr{p=1}^{a}\,\pr{p=0}^{n-a} \\
+\pr{P=a} &= \comb{n}{a}\,F(x)^{a}\,(1-F(x))^{n-a}\label{bin}  
+\end{align}
+Equation \eqref{bin} is probability of having values of $a$ random variables less than equal to x.  
+\begin{align}
+ F_{(k,n)}(x) &= \pr{P\geq k} =  \sum_{j=k}^{n} \pr{P=j} \\
 \therefore F_{(k,n)}(x) &=  \sum_{j=k}^{n}\comb{n}{j}\times \brak{F(x)}^{j}\times\brak{1-F(x)}^{n-j} 
 \end{align}
 \end{proof}
