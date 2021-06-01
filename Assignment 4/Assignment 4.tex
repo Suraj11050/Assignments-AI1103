@@ -169,20 +169,20 @@ F_{(k,n)}(x) =  \sum_{j=k}^{n}\comb{n}{j}\times \brak{F(x)}^{j}\times\brak{1-F(x
 F_{(k,n)}(x) &= \pr{X_{(k)}\leq x} \\
 F_{(k,n)}(x) &= \pr{\text{At least k elements have value $\leq x$}} \label{kcdf}
 \end{align}
-let $p \sim Bern\,(\pr{X\leq x})$ such that   
+Since $\pr{X\leq x} = F(x)$ , Let $ Q \sim Bern(F(x))$
 \begin{align}
-\pr{p=1} &= \pr{X\leq x} = F(x) \\
-\pr{p=0} &= 1-\pr{X\leq x} = 1-F(x)
+\pr{Q=1} &= F(x) \\
+\pr{Q=0} &= 1-F(x)
 \end{align}
-Let $P$ follows Binomial distribution taking $n$ independent trails from above Bernoulli's distribution    
+Let $P \sim B(n,F(x))$ taking $n$ trails from $Bern(F(x))$    
 \begin{align}
-\pr{P=a} &= \comb{n}{a}\,\pr{p=1}^{a}\,\pr{p=0}^{n-a} \\
-\pr{P=a} &= \comb{n}{a}\,F(x)^{a}\,(1-F(x))^{n-a}\label{bin}  
+\pr{P=i} &= \comb{n}{i}\,\pr{Q=1}^{i}\,\pr{Q=0}^{n-i} \\
+\pr{P=i} &= \comb{n}{i}\,F(x)^{i}\,(1-F(x))^{n-i}\label{bin}  
 \end{align}
-Equation \eqref{bin} is probability of having values of $a$ random variables less than equal to x.  
+Equation \eqref{bin} is probability of exactly $i$ R.V of given sample have values $\leq x$   
 \begin{align}
  F_{(k,n)}(x) &= \pr{P\geq k} =  \sum_{j=k}^{n} \pr{P=j} \\
-\therefore F_{(k,n)}(x) &=  \sum_{j=k}^{n}\comb{n}{j}\times \brak{F(x)}^{j}\times\brak{1-F(x)}^{n-j} 
+\therefore F_{(k,n)}(x) &=  \sum_{j=k}^{n}\comb{n}{j}\, \brak{F(x)}^{j}\,\brak{1-F(x)}^{n-j} 
 \end{align}
 \end{proof}
 
