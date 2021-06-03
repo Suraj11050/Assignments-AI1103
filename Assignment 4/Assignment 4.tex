@@ -126,6 +126,7 @@ columns=fullflexible
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
 Download all python codes from 
 \begin{lstlisting}
 https://github.com/Suraj11050/Assignments-AI1103/tree/main/Assignment%204/Python%20codes
@@ -209,9 +210,9 @@ S_1  &= \sum_{j=k}^{n} \dfrac{n!}{(n-j)!\,(j-1)!}\brak{1-F(x)}^{n-j}F(x)^{j-1} f
 \begin{align}
 S_2  &= \sum_{j=k}^{n}\,\dfrac{n!}{(n-j-1)!\,j!}\brak{1-F(x)}^{n-j-1}F(x)^{j}\,f(x) \label{a}
 \end{align}
-let $i = j+1$ change the limits for the summation in equation \eqref{a}
+let $i = j+1$ in equation \eqref{a} (changing limits)
 \begin{align}
-S_2  &= \sum_{i=k+1}^{n}\,\dfrac{n!}{(n-i)!\,(i-1)!}\brak{1-F(x)}^{n-i}F(x)^{i-1}\,f(x)
+S_2  &= \sum_{i=k+1}^{n}\,\dfrac{n!}{(n-i)!\,(i-1)!}\brak{1-F(x)}^{n-i}F(x)^{i-1}\,f(x) 
 \end{align}
 \begin{align}
 f_{(k,n)}(x) &= S_1 - S_2 \\
@@ -219,7 +220,6 @@ f_{(k,n)}(x) &= \dfrac{n!\,f(x)\brak{1-F(x)}^{n-k}F(x)^{k-1}}{(n-k)!\,(k-1)!}\\
 \therefore f_{(k,n)}(x) &= n\,\comb{n-1}{k-1}\,\brak{1-F(x)}^{n-k}F(x)^{k-1} f(x)
 \end{align}
 \end{proof}
-\bigskip
 \textbf{Method 1:} \\
 Let $X\in[0,2]$ be a random variable of uniform order statistic distribution of sample size 8 then
 \begin{align}
@@ -263,7 +263,16 @@ Hence the marginal probability density given is $7^{th}$ order statistic and
 \hrule
 \vspace{0.5cm}
 \begin{definition}
+\textbf{Beta function}\\
 \label{def2}
+ The \textbf{Beta function} is defined for $r, s \in \R^{+}$ by 
+\begin{equation}
+\Beta(r,s) = \Int_{0}^{1} x^{r-1}\,\brak{1-x}^{s-1}\,dx = \dfrac{\Gamma(r)\,\Gamma(s)}{\Gamma(r+s)} 
+\label{eqn_5}
+\end{equation}
+\end{definition}
+
+\begin{definition}
 \textbf{Uniform order statistics} \\
 Let $\{X_1,\cdots X_n\}$ be i.i.d form a uniform distribution on $[0,1]$ such that $f(x) = 1$ and $F(x)=x$,
 from theorem \eqref{th2}, equation \eqref{eqn_2}
@@ -275,28 +284,20 @@ Since equation \eqref{eqn_3} is PDF
  \Int_{0}^{1} n\;\comb{n-1}{k-1}\,x^{k-1}\,\brak{1-x}^{n-k} \,dx  = 1    
 \end{equation}
 \begin{align}
-\Int_{0}^{1} x^{k-1}\,\brak{1-x}^{n-k} \,dx  &= \dfrac{(k-1)!\,(n-k)!}{n!}  \\
-\Int_{0}^{1} x^{k-1}\,\brak{1-x}^{n-k} \,dx  &= \dfrac{\Gamma(k)\,\Gamma(n-k+1)}{\Gamma\brak{(n-k+1)+k)}} 
-\label{beqn}
+\Int_{0}^{1} x^{k-1}\brak{1-x}^{n-k} \,dx  &= \dfrac{(k-1)!\,(n-k)!}{n!}  \\
+\Int_{0}^{1} x^{k-1}\brak{1-x}^{n-k} \,dx  &= \dfrac{\Gamma(k)\,\Gamma(n-k+1)}{\Gamma\brak{k+(n-k+1))}} \\
+\Int_{0}^{1} x^{k-1}\brak{1-x}^{n-k} \,dx  &= \Beta(k,n-k+1)
 \end{align}
-\label{def3}
 \end{definition}
-\begin{definition}
-\textbf{Beta function}\\
-From definition \eqref{def2}, equation \eqref{beqn} let $r = k$ and $s = n-k+1$ The \textbf{Beta function} is
-defined for r, s $> 0$
-\begin{equation}
-\Beta(r,s) = \Int_{0}^{1} x^{r-1}\,\brak{1-x}^{s-1}\,dx = \dfrac{\Gamma(r)\,\Gamma(s)}{\Gamma(r+s)} 
-\label{eqn_5}
-\end{equation}
 \newpage
-\end{definition}
+\begin{definition}
+\label{bddef}
 \textbf{Beta Distribution} \\
 The Beta distribution is a continuous distribution defined on the range $(0,1)$ whose PDF given by 
 \begin{align}
 f(x) &= \dfrac{1}{\Beta(r,s)}\,x^{r-1}\,\brak{1-x}^{s-1} 
 \end{align}
-where $\Int_{0}^1f(x) = 1$ as per definition \eqref{def3} 
+where $\Int_{0}^1f(x) = 1$ as per definition \eqref{def2} 
 
 CDF, Mean value and Variance of Beta distribution
 \begin{align}
@@ -304,10 +305,13 @@ CDF, Mean value and Variance of Beta distribution
  E(x)   &=   \dfrac{r}{r+s} \\
  Var(x) &= \dfrac{rs}{(r+s)^{2}\,(r+s+1)}
 \end{align}
-In Uniform order statistics on [0,1] the PDF of $k^{th}$ order statistic follows Beta distribution with $r=k$, $s=n-k+1$ and PDF is given by 
+\end{definition}
+\begin{lemma}
+Uniform order statistics on [0,1] the PDF of $k^{th}$ order statistic follows Beta distribution with $r=k$, $s=n-k+1$ and  PDF is given by 
 \begin{align}
 f(x) &= \dfrac{1}{\Beta(k,n-k+1)}\,x^{k-1}\,\brak{1-x}^{(n-k+1)-1} 
 \end{align}
+\end{lemma}
 \textbf{Method 2:}\\
 we know that, PDF of $k^{th}$ order statistic of a uniform distribution on $[0,1]$ follows 
 beta distribution
