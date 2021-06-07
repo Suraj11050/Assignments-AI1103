@@ -170,10 +170,10 @@ F_{(k,n)}(x) =  \sum_{j=k}^{n}\comb{n}{j}\times \brak{F_{X}(x)}^{j}\times\brak{1
 F_{(k,n)}(x) &= \pr{X_{(k)}\leq x} \\
 F_{(k,n)}(x) &= \pr{\text{At least k elements have value $\leq x$}} \label{kcdf}
 \end{align}
-Since $\pr{X\leq x} = F(x)$ , Let $ Q \sim Bern(F(x))$
+Since $\pr{X\leq x} = F_{X}(x)$ , Let $ Q \sim Bern(F_{X}(x))$
 \begin{align}
-\pr{Q=1} &= F(x) \\
-\pr{Q=0} &= 1-F(x)
+\pr{Q=1} &= F_{X}(x) \\
+\pr{Q=0} &= 1-F_{X}(x)
 \end{align}
 Let $P \sim B(n,F(x))$ taking $n$ trails from $Bern(F(x))$    
 \begin{align}
